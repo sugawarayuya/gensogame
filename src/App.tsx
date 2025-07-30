@@ -221,7 +221,7 @@ function App() {
           canDrawFromDiscard={
             (currentGameMode === 'local' || isHumanTurn) && 
             !hasDrawnThisTurn && 
-            gameState.discardPile.length > 0
+            gameState.discardPile.length > 0 &&
             gameState.phase === 'playing'
           }
         />
