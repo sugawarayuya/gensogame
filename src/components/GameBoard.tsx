@@ -27,7 +27,7 @@ const GameBoard: React.FC<GameBoardProps> = ({
                      shadow-lg cursor-pointer hover:shadow-xl transition-all duration-200
                      flex items-center justify-center font-bold text-white text-xs
                      hover:transform hover:scale-105"
-          onClick={onDrawFromDeck}
+          onClick={deckCount > 0 ? onDrawFromDeck : undefined}
         >
           <div className="text-center">
             <div className="text-lg">🧪</div>

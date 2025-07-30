@@ -33,7 +33,7 @@ const Card: React.FC<CardProps> = ({
 
   const sizeClasses = {
     small: 'w-12 h-16 text-xs',
-    medium: 'w-16 h-22 text-sm',
+    medium: 'w-16 h-24 text-sm',
     large: 'w-20 h-28 text-base'
   };
 

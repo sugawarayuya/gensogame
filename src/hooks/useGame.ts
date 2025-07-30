@@ -45,7 +45,7 @@ export const useGame = (gameMode: 'ai' | 'local' | 'online' = 'ai', initialPlaye
     }
 
     const remainingDeck = deck.slice(players.length * 13);
-    const discardPile = [remainingDeck.pop()!];
+    const discardPile: Card[] = remainingDeck.length > 0 ? [remainingDeck.pop()!] : [];
 
     return {
       players,
@@ -102,10 +102,11 @@ export const useGame = (gameMode: 'ai' | 'local' | 'online' = 'ai', initialPlaye
       
       // Check for win condition
       const handTypes = evaluateHand(player.hand);
-      if (canWin(player.hand) && getTotalScore(handTypes) >= 6) {
+      const totalScore = getTotalScore(handTypes);
+      if (totalScore >= 6) {
         newState.phase = 'ended';
         newState.winner = player.id;
-        player.score += getTotalScore(handTypes);
+        player.score += totalScore;
       } else {
         // Next player's turn
         newState.currentPlayerIndex = (newState.currentPlayerIndex + 1) % newState.players.length;
@@ -170,7 +171,7 @@ export const useGame = (gameMode: 'ai' | 'local' | 'online' = 'ai', initialPlaye
     }
 
     const remainingDeck = deck.slice(players.length * 13);
-    const discardPile = [remainingDeck.pop()!];
+    const discardPile: Card[] = remainingDeck.length > 0 ? [remainingDeck.pop()!] : [];
 
     setGameState({
       players,

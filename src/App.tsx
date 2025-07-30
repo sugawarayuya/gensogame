@@ -222,6 +222,7 @@ function App() {
             (currentGameMode === 'local' || isHumanTurn) && 
             !hasDrawnThisTurn && 
             gameState.discardPile.length > 0
+            gameState.phase === 'playing'
           }
         />
 
@@ -236,7 +237,10 @@ function App() {
                   </p>
                 ) : (
                   <p className="text-lg text-gray-700">
-                    山札または捨て札からカードを引いてください
+                    {gameState.deck.length > 0 ? '山札' : ''}
+                    {gameState.deck.length > 0 && gameState.discardPile.length > 0 ? 'または' : ''}
+                    {gameState.discardPile.length > 0 ? '捨て札' : ''}
+                    からカードを引いてください
                   </p>
                 )
               ) : currentGameMode === 'ai' ? (

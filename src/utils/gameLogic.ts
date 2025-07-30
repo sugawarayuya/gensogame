@@ -213,7 +213,7 @@ export const getTotalScore = (handTypes: HandType[]): number => {
 
 export const canWin = (hand: Card[]): boolean => {
   const handTypes = evaluateHand(hand);
-  return handTypes.length > 0;
+  return getTotalScore(handTypes) >= 6;
 };
 
 export const getAIMove = (player: Player, discardPile: Card[]): { drawFromDiscard: boolean; discardCard: Card } => {
